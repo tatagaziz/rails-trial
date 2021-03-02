@@ -9,8 +9,8 @@ default: &default
   encoding: unicode
   database: postgres_trial_default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") { trial } %>
+  username: railstrial
+  password: trial
   timeout: 5000
   host: localhost
   port: 5432
