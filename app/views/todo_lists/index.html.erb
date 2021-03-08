@@ -1,0 +1,50 @@
+<div class="container col s12">
+    <h3 class="col s6 offset-s3">簡単なタスクリスト</h3>
+    <ul class="collapsible">
+        <% @todo_list.each do |todo_list_item|%>
+        <li>
+        <div class="collapsible-header">
+            <p><%=todo_list_item.title%></p>
+            <span class="badge"><%=todo_list_item.deadline%></span>
+        </div>
+        <div class="collapsible-body">
+            <p><%=todo_list_item.description%></p>
+        </div>
+        </li>
+        <% end %>
+    </ul>
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#new-todo-list">New</a>
+</div>
+
+<!-- Modal Structure -->
+<div id="new-todo-list" class="modal">
+    <form action="/todo_lists" accept-charset="UTF-8" method="post">
+    <%= csrf_meta_tags %>
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" type="text" name="todo_list_item[title]" class="validate">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="description" name="todo_list_item[description]" class="materialize-textarea"></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="deadline" type="text" name="todo_list_item[deadline]" class="datepicker">
+                <label for="deadline">Deadline</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn modal-close waves-effect waves-green btn-flat">
+            <input type="submit">
+        </div>
+    </div>
+    </form>
+</div>
